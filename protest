@@ -1,0 +1,21 @@
+#!/bin/sh
+
+pronounr=$(shuf -i1-4 -n1)
+actionr=$(shuf -i1-31 -n1)
+nounr=$(shuf -i1-31 -n1)
+never=$(shuf -i1-6 -n1)
+#echo $r
+
+sed "$pronounr!d" pronouns.csv | while IFS=, read pronoun possessive; 
+do
+   sed "$actionr!d" actions.csv | while IFS=, read action;
+   do
+      sed "$nounr!d" nouns.csv | while IFS='' read noun;
+      do
+         sed "$never!d" younever.csv | while IFS='' read never;
+         do
+         echo $pronoun $action $possessive $noun, $never 
+         done
+      done
+   done
+done

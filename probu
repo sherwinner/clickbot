@@ -1,0 +1,17 @@
+#!/bin/sh
+
+nounr=$(shuf -i1-4 -n1)
+actionr=$(shuf -i1-10 -n1)
+#echo $r
+
+sed "$nounr!d" pronouns.csv | while IFS=, read pronoun possessive; 
+do
+sed "$actionr!d" actions.csv | while IFS=, read action;
+do
+   echo $pronoun
+   echo $action
+   echo $possessive   
+
+done
+done
+echo $second
